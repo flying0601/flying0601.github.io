@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>HTML与CSS布局技巧精髓 | Flying&#39;s Blog | Live long and Prosper!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="HTML/CSS,布局技巧">
+    <meta name="description" content="HTML与CSS布局技巧精髓">
+<meta name="keywords" content="HTML&#x2F;CSS,布局技巧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML与CSS布局技巧精髓">
+<meta property="og:url" content="http://yoursite.com/2017/12/20/HTML与CSS布局技巧精髓/index.html">
+<meta property="og:site_name" content="Flying&#39;s Blog">
+<meta property="og:description" content="HTML与CSS布局技巧精髓">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.blog.csdn.net/20160410175739571">
+<meta property="og:image" content="http://img.blog.csdn.net/20160410182852740">
+<meta property="og:updated_time" content="2018-03-25T14:06:27.912Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML与CSS布局技巧精髓">
+<meta name="twitter:description" content="HTML与CSS布局技巧精髓">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20160410175739571">
+    
+        <link rel="alternate" type="application/atom+xml" title="Flying&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Flying</h5>
+          <a href="mailto:772087362@qq.com" title="772087362@qq.com" class="mail">772087362@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/flying0601" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about" target="_blank" >
+                <i class="icon icon-lg icon-sellsy"></i>
+                关于我
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">HTML与CSS布局技巧精髓</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">HTML与CSS布局技巧精髓</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-12-20T12:27:00.000Z" itemprop="datePublished" class="page-time">
+  2017-12-20
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/HTML-CSS/">HTML/CSS</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#单列布局"><span class="post-toc-text">单列布局</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#水平居中"><span class="post-toc-text">水平居中</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#垂直居中"><span class="post-toc-text">垂直居中</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-HTML与CSS布局技巧精髓"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">HTML与CSS布局技巧精髓</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-12-20 20:27:00" datetime="2017-12-20T12:27:00.000Z"  itemprop="datePublished">2017-12-20</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/HTML-CSS/">HTML/CSS</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>总结下自己对CSS布局的理解，分析下了解各种布局的优劣，同时希望能分享给初入前端的朋友们一些在布局上的经验，如果有那些地方总结的不好，欢迎大家指正。言归正传，现在就来揭开各种布局的面纱。<a id="more"></a></p>
+<h2 id="单列布局"><a href="#单列布局" class="headerlink" title="单列布局"></a>单列布局</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h3><p>水平居中的布局方式是最常见的一种，常常用于头部、内容区、页脚，它主要的作用是控制盒子在整个页面以水平居中的方式呈现。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.blog.csdn.net/20160410175739571" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<blockquote>
+<p> 使用margin：0 auto来实现</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.child</span>&#123;<span class="attribute">width</span>:<span class="number">800px</span>; <span class="attribute">margin</span>: <span class="number">0</span> auto;&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>优势：兼容性好</li>
+<li>劣势：需要指定盒子 宽度</li>
+</ul>
+</blockquote>
+<p>1.使用table来实现<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.child</span>&#123;<span class="attribute">display</span>: table; <span class="attribute">margin</span>: <span class="number">0</span> auto;&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<ul>
+<li>优势：不需要父容器parent，只需要对自身进行设置</li>
+<li>劣势：IE6、7需要调整结构</li>
+</ul>
+</blockquote>
+<p>2.使用inline-block和text-align来实现<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span>&#123;<span class="attribute">text-align</span>: center;&#125;</span><br><span class="line"><span class="selector-class">.child</span>&#123;<span class="attribute">display</span>: inline-block;&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<ul>
+<li>优势：兼容性好</li>
+<li>劣势：需要同时设置子元素和父元素</li>
+</ul>
+</blockquote>
+<p>3.使用绝对定位absolute来实现</p>
+<p>使用绝对定位来实现水平居中布局有两种情况，一种子容器无宽度，另一种子容器有宽度。无宽度可以用一下代码，如果是有宽度，则可以设置margin-left负值为容器宽度的一半。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span>&#123;<span class="attribute">position</span>: relative;&#125;</span><br><span class="line"><span class="selector-class">.child</span>&#123;<span class="attribute">position</span>: absolute; <span class="attribute">left</span>: <span class="number">50%</span>; <span class="attribute">transform</span>: <span class="built_in">translateX</span>(-50%);&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<ul>
+<li>优势：无需设置容器宽度，在移动端可以使用</li>
+<li>劣势：兼容性差，需要IE9及以上浏览器的支持</li>
+</ul>
+</blockquote>
+<p>4.使用flex布局来实现</p>
+<p>flex有两种方法来实现水平居中，父容器设置display：flex， 一种直接在父容器中设置justify-content属性值center。第二种在子容器中使用margin： 0 auto<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span>&#123;<span class="attribute">display</span>: flex; <span class="attribute">justify-content</span>: center;&#125;</span><br><span class="line"><span class="selector-class">.parent</span>&#123;<span class="attribute">display</span>: flex;&#125;</span><br><span class="line"><span class="selector-class">.child</span>&#123;<span class="attribute">margin</span>: <span class="number">0</span> auto;&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<ul>
+<li>优势：实现起来简单，尤其是使用在响应式布局中</li>
+<li>劣势：兼容性差，如果大面积的使用该布局可能会影响效率</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.blog.csdn.net/20160410182852740" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>这边说的垂直居中是子容器无高的垂直居中，并非单行文本垂直居中line-height<br>1.使用绝对定位absolute来实现（同水平居中的使用方法，优劣一样）<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span>&#123;<span class="attribute">position</span>: relative;&#125;</span><br><span class="line"><span class="selector-class">.child</span>&#123;<span class="attribute">position</span>: absolute; <span class="attribute">top</span>: <span class="number">50%</span>; <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-50%);&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2.使用flex来实现<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span>&#123;<span class="attribute">display</span>: flex; <span class="attribute">align-items</span>: center;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>3.使用display：table-cell来实现<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span>&#123;<span class="attribute">display</span>: table-cell;<span class="attribute">vertical-align</span>: middle;<span class="attribute">height</span>: <span class="number">400px</span>;&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>总结：将水平居中和垂直居中两种布局方法相互的结合起来就可以实现水平居中布局。这边只举一个用绝对定位来实现水平垂直居中布局的方法，别的方法大家可以尝试自己练习。（以下介绍各种布局时都是基于上面水平和垂直居中的方法，所有对于它们的优劣就不再分析。）<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span>&#123;<span class="attribute">position</span>: relative;&#125;</span><br><span class="line"><span class="selector-class">.child</span>&#123;<span class="attribute">position</span>: absolute; <span class="attribute">top</span>: <span class="number">50%</span>; <span class="attribute">left</span>: <span class="number">50%</span>; <span class="attribute">transform</span>: <span class="built_in">translate</span>(-50%,-50%);&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<ul>
+<li>整理知识，学习笔记</li>
+<li>发布日记，杂文，所见所想</li>
+<li>撰写发布技术文稿（代码支持）</li>
+<li>撰写发布学术论文（LaTeX 公式支持）</li>
+</ul>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-03-25T14:06:27.912Z" itemprop="dateUpdated">2018-03-25 22:06:27</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="/2017/12/20/HTML与CSS布局技巧精髓/" target="_blank" rel="external">http://yoursite.com/2017/12/20/HTML与CSS布局技巧精髓/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Flying">
+            Flying
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML-CSS/">HTML/CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/布局技巧/">布局技巧</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/02/25/安全应急响应中心平台的设计与实现/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">安全应急响应中心平台的设计与实现</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/10/25/最全的HTML和CSS标签命名规则/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">最全的HTML和CSS标签命名规则</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'disqus_shortname';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Bug不会眷顾你的哈~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+
+            <span>Flying &copy; 2015 - 2018</span>
+            <span>
+        </p>
+    </div>
+    <!--<div class="bottom">
+        <p>
+        <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">闽ICP备16004621号-2</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>-->
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Hi`你好像掉线咯！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Hi`Flying`s Blog!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
