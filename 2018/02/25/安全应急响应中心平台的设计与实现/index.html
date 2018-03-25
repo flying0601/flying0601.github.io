@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>安全应急响应中心平台的设计与实现 | Flying&#39;s Blog | Live long and Prosper!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="网络安全,漏洞收集,披露计划,应急响应平台">
+    <meta name="description" content="摘要：随着网络技术的迅速发展和普及，网络安全已经成为企业必不可少的环节。本文通对现有企业网络安全的调查和分析，结合企业网络安全的要求与平台功能需求，采用B/S结构模块化设计的基本思路。构建了一个基于PHP的通用企业网络安全应急响应中心为企业实现漏洞收集和披露计划。因此，建立适合中小企业的网络安全应急响应中心平台具有十分重要的现实意义。关键字：网络安全；漏洞收集；披露计划；应急响应平台 中图分类号：">
+<meta name="keywords" content="网络安全,漏洞收集,披露计划,应急响应平台">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安全应急响应中心平台的设计与实现">
+<meta property="og:url" content="http://yoursite.com/2018/02/25/安全应急响应中心平台的设计与实现/index.html">
+<meta property="og:site_name" content="Flying&#39;s Blog">
+<meta property="og:description" content="摘要：随着网络技术的迅速发展和普及，网络安全已经成为企业必不可少的环节。本文通对现有企业网络安全的调查和分析，结合企业网络安全的要求与平台功能需求，采用B/S结构模块化设计的基本思路。构建了一个基于PHP的通用企业网络安全应急响应中心为企业实现漏洞收集和披露计划。因此，建立适合中小企业的网络安全应急响应中心平台具有十分重要的现实意义。关键字：网络安全；漏洞收集；披露计划；应急响应平台 中图分类号：">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/10798423-18a4ad22225c70fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/554">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/10798423-696c8a99bc876064.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/553">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/10798423-77c73232214fe5cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/554">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/10798423-d234e28f47563e9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/553">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/10798423-347064427c4ef042.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/554">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/10798423-558b0da1c6dddfb3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/554">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/10798423-bd6fa15a82518c00.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/583">
+<meta property="og:updated_time" content="2018-03-25T10:47:24.243Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="安全应急响应中心平台的设计与实现">
+<meta name="twitter:description" content="摘要：随着网络技术的迅速发展和普及，网络安全已经成为企业必不可少的环节。本文通对现有企业网络安全的调查和分析，结合企业网络安全的要求与平台功能需求，采用B/S结构模块化设计的基本思路。构建了一个基于PHP的通用企业网络安全应急响应中心为企业实现漏洞收集和披露计划。因此，建立适合中小企业的网络安全应急响应中心平台具有十分重要的现实意义。关键字：网络安全；漏洞收集；披露计划；应急响应平台 中图分类号：">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/10798423-18a4ad22225c70fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/554">
+    
+        <link rel="alternate" type="application/atom+xml" title="Flying&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Flying</h5>
+          <a href="mailto:772087362@qq.com" title="772087362@qq.com" class="mail">772087362@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/flying0601" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about" target="_blank" >
+                <i class="icon icon-lg icon-sellsy"></i>
+                关于我
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">安全应急响应中心平台的设计与实现</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">安全应急响应中心平台的设计与实现</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-02-25T05:33:58.000Z" itemprop="datePublished" class="page-time">
+  2018-02-25
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/网络安全/">网络安全</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-引言（Introduction）"><span class="post-toc-text">1.引言（Introduction）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-安全应急响应中心的基本含义"><span class="post-toc-text">2. 安全应急响应中心的基本含义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-建立安全应急响应中心的重要性和必要性"><span class="post-toc-text">3.建立安全应急响应中心的重要性和必要性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-安全应急响应中心平台的需求分析"><span class="post-toc-text">4. 安全应急响应中心平台的需求分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-安全应急响应中心平台数据库设计"><span class="post-toc-text">5. 安全应急响应中心平台数据库设计</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-安全应急响应中心平台的模块设计"><span class="post-toc-text">6. 安全应急响应中心平台的模块设计</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-安全应急响应中心平台的运行环境"><span class="post-toc-text">7. 安全应急响应中心平台的运行环境</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-安全应急响应中心平台的实现运行"><span class="post-toc-text">8. 安全应急响应中心平台的实现运行</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-结论（Conclusion）"><span class="post-toc-text">9. 结论（Conclusion）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考文献（References）"><span class="post-toc-text">参考文献（References）</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-安全应急响应中心平台的设计与实现"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">安全应急响应中心平台的设计与实现</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-02-25 13:33:58" datetime="2018-02-25T05:33:58.000Z"  itemprop="datePublished">2018-02-25</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/网络安全/">网络安全</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>摘要：随着网络技术的迅速发展和普及，网络安全已经成为企业必不可少的环节。本文通对现有企业网络安全的调查和分析，结合企业网络安全的要求与平台功能需求，采用B/S结构模块化设计的基本思路。构建了一个基于PHP的通用企业网络安全应急响应中心为企业实现漏洞收集和披露计划。因此，建立适合中小企业的网络安全应急响应中心平台具有十分重要的现实意义。<br><strong>关键字：网络安全；漏洞收集；披露计划；应急响应平台</strong></p>
+<p><strong>中图分类号：TP311文献标识码：A</strong><br> Design and implementation of safety emergency response center platform<br>Abstract:With the rapid development and popularization of network technology, network security has become an indispensable part of enterprises.This paper investigates and analyzes the network security of existing enterprises, and combines the requirements of enterprise network security and the functional requirements of the platform,the basic idea of modular design of B/S structure is adopted.A general enterprise network security emergency response center based on PHP is constructed to collect and disclose plans for enterprises.Therefore, it is of great practical significance to establish a network security emergency response center platform suitable for small and medium-sized enterprises.<br><strong>Keywords:Network Security;Vulnerability Collection;Disclosure Plan;Security Response Center</strong></p>
+<h2 id="1-引言（Introduction）"><a href="#1-引言（Introduction）" class="headerlink" title="1.引言（Introduction）"></a>1.引言（Introduction）</h2><p>近年来，黑客攻击越来越频繁，企业网络安全也变得极其重要。企业安全应急响应中心,一般起着对外发布企业突发安全事件处理动态，作为企业与热心用户以及白帽黑客沟通反馈的平台以及对外发布企业信息安全团队研究成果的重要作用。为互联网用户能够直接访问到企业网络安全保护体系提供途径，同时也是协调企业各部门及时响应安全事件的工作重点。实现属于中小企业的安全应急响应中心平台，有助于其完善网络安全保护体系。</p>
+<h2 id="2-安全应急响应中心的基本含义"><a href="#2-安全应急响应中心的基本含义" class="headerlink" title="2. 安全应急响应中心的基本含义"></a>2. 安全应急响应中心的基本含义</h2><p>（The basic meaning of the safety emergency response center）<br>安全应急响应中心是企业用于对外接收来自用户发现并报告的产品缺陷的站点。目前主要有两种实现方式：<br>2.1漏洞报告平台<br>漏洞报告平台是指由独立的第三方公司或机构成立综合性的“安全应急响应中心”。国内补天平台、漏洞盒子平台，以及据此衍生的Sobug众测平台等均属于该模式。外部报告者注册对应漏洞报告平台选择对应的厂商进行报送，接着该第三方机构会发送邮件提示相关厂商确认处理。这种方法的缺陷十分明显。厂商的历史漏洞信息完全暴露给第三方机构，报告中涉及的企业内部大量敏感信息因此外泄丧失私密性[2]。<br>2.2 xSRC模式<br>xSRC模式是指：企业自己分配工程师开发属于自身的安全应急响应中心，制定自己的漏洞收集和披露计划。目前包括Google、Microsoft以及腾讯、阿里巴巴、百度等，均成立了自己的安全应急响应中心，对外收集并处理安全研究员报送的漏洞报告。使用这种模式，企业在漏洞的收集和披露过程中完全掌控了主动性，拥有良好的私密性和可定制性[3]。</p>
+<h2 id="3-建立安全应急响应中心的重要性和必要性"><a href="#3-建立安全应急响应中心的重要性和必要性" class="headerlink" title="3.建立安全应急响应中心的重要性和必要性"></a>3.建立安全应急响应中心的重要性和必要性</h2><p>（ The importance and necessity of establishing a safe emergency response center）<br>近年来黑客攻击频发，企业信息安全已经愈来愈受到重视。大型企业的业务模式多，涉及的产品也多，特别是互联网业务讲究小步快跑敏捷迭代，往往忽视了安全检查或者来不及进行细致的安全检查，同时安全系统本身是程序也会存在各种遗漏，因为互联网业务的在线特性，使得互联网的人都能够接触到，相对于传统业务被攻击面扩大，所以更容易被善意的、恶意的或者无意的人发现漏洞如果漏洞被利用或者在黑市交易，对企业和用户是极大危害的[3]<br>纵观国内外，Google、微软、阿里巴巴、腾讯、小米、网易等知名互联网公司都已经建立各自的应急响应中心，并在推出以后取得了良好的效果，对企业安全有了巨大的协调和推动作用[1]。可以把安全应急响应中心看成一种安全能力或者产品，由一个安全应急响应中心服务商来为没有资源建设安全应急响应中心的企业整合资源提供安全应急响应中心平台，这就是云安全应急响应中心了。</p>
+<h2 id="4-安全应急响应中心平台的需求分析"><a href="#4-安全应急响应中心平台的需求分析" class="headerlink" title="4. 安全应急响应中心平台的需求分析"></a>4. 安全应急响应中心平台的需求分析</h2><p>（Analysis of demand for safety emergency response center platform）<br>需求分析（Requirements Analysis）是系统分析员和软件工程师在创建新的系统，确定顾客的需要，包含基本需求，整体框架，设计目标，设计原则，系统功能，可行性分析等。需求分析是一系列活动的组成，包含需要解决问题的具体方法及确定系统实施方法必须采取的行动等。<br> 4.1总体需求<br>在“漏洞报告平台”模式在实现过程中由于操作运营的规范问题，外加越来越多的鱼龙混杂的第三方企业和机构的介入，甚至出现了漏洞报告平台泄漏企业敏感信息从而导致企业因此被攻击的案例。另一方面，出于私密性和可定制性的考虑，大多数互联网企业均倾向于选择“xSRC”模式。作为互联网企业安全防护体系中用户所能直接接触到的门面，同时也作为协调企业各部门对安全事件做出及时积极响应的工作中心，企业制定长远的战略性规划识，建立安全应急响应中心是能够更直观地了解到企业网络安全情况[3]。<br>企业对安全应急响应中心平台的总体需求是，①漏洞提交与管理；②安全公告管理③研究博客管理④贡献管理⑤用户管理⑥平台设置。<br>基于以上原因，本文开发安全应急响应中心平台，提供企业常用的网络安全应急响应功能，建立属于中小企业的安全应急中心平台[4]。<br>4.2平台实现的原则<br>4.2.1可操作<br>该平台主要面向中小企业。因此，在平台的操作上尽可能简单明了、没有复杂的操作，同时保证平台的稳定运行。<br>4.2.2 安全<br>该平台是通过浏览器访问互联网使用，因此系统在设计上全面考虑用户权限设置，并配备必要的网络安全设备确保平台安全[5]。<br>4.2.3高效<br>虽然该平台的流量不多，但是通过网络来访问用户存在不确定性，因此应该具备较好的网络服务器性能并配置高性能的Web服务。<br>4.2.4可扩展<br>虽然中小企业网络安全是大体相同的，但不同企业的需求必然有其特殊的地方，平台应该具有二次开发的功能，更好进行的平台升级优化。</p>
+<h2 id="5-安全应急响应中心平台数据库设计"><a href="#5-安全应急响应中心平台数据库设计" class="headerlink" title="5. 安全应急响应中心平台数据库设计"></a>5. 安全应急响应中心平台数据库设计</h2><p>（Database design of safety emergency response center platform）<br>通过对上述平台要求的分析，给出了以下数据库设计:<br>平台数据库关键的信息表，如图1所示：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/10798423-18a4ad22225c70fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/554" alt="图1 平台数据库关键信息表" title="">
+                </div>
+                <div class="image-caption">图1 平台数据库关键信息表</div>
+            </figure><br>平台管理员信息表中主要字段有管理者ID、用户名、邮箱、密码、防护token、登录IP、创建时间、上次登录时间<br>平台用户信息表中主要字段有用户ID、个人资料ID、用户名、真实名字、团队、邮箱、密码、防护token、用户头像、地址、个人简介等。<br>平台漏洞信息表中主要字段有编号、会话控制、标题、内容、状态、日期、时间、提交编号、提交者、分类、操作等。<br>平台公告信息表中主要字段有公告ID、标题、名称、作者、内容、发布时间。<br>平台博客信息表中主要字段有博客ID、标题、名称、作者、内容、发布时间。<br>平台奖品信息表中主要字段有奖品ID、标题、图片、价格、分类。<br>平台设置信息表中主要字段有设置ID、设置内容、设置数据1、设置数据2、设置数据3等。</p>
+<h2 id="6-安全应急响应中心平台的模块设计"><a href="#6-安全应急响应中心平台的模块设计" class="headerlink" title="6. 安全应急响应中心平台的模块设计"></a>6. 安全应急响应中心平台的模块设计</h2><p>（Module design of safety emergency response center platform）<br>本平台平台主要由两部分组成，分别是前台模块、后台模块。<br>前台模块结构如图2所示。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/10798423-696c8a99bc876064.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/553" alt="图2 前台模块结构" title="">
+                </div>
+                <div class="image-caption">图2 前台模块结构</div>
+            </figure><br>图2 前台模块结构<br>后台模块结构如图3所示。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/10798423-77c73232214fe5cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/554" alt="图3后台模块结构" title="">
+                </div>
+                <div class="image-caption">图3后台模块结构</div>
+            </figure><br>图3后台模块结构</p>
+<h2 id="7-安全应急响应中心平台的运行环境"><a href="#7-安全应急响应中心平台的运行环境" class="headerlink" title="7. 安全应急响应中心平台的运行环境"></a>7. 安全应急响应中心平台的运行环境</h2><p>（The operating environment of the security emergency response center platform）<br>平台的推荐运行环境是 Apache+MySQL+PHP[6]（5.3及以上）在安装和使用平台之前确保已经具备运行的环境。若是Linux系统的服务器,在使用前确保为平台运行的环境目录分配了足够的读写权限[7]，保证ThinkPHP框架[8]文件正常加载或Runtime缓存目录正常生成,以上都是平台稳定运行的前提条件。<br>配置环境后，请您将平台目录的源代码程序全部解压缩至网站目录下。<br>接着需要配置平台运行所需的数据库，登录到phpmyadmin， 创建名为inet的数据库，确保\Application\Common\Conf\db.php 中对应位置被正确配置:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&apos;DB_HOST&apos; =&gt; &apos;localhost&apos;, // Mysql 服务器地址</span><br><span class="line">&apos;DB_NAME&apos; =&gt; &apos;inet&apos;, // 数据库名</span><br><span class="line">&apos;DB_USER&apos; =&gt; &apos;root&apos;, // Mysql 用户名</span><br><span class="line">&apos;DB_PWD&apos; =&gt; &apos;flying&apos;, // Mysql 密码</span><br><span class="line">&apos;DB_PORT&apos; =&gt; &apos;3306&apos;, // Mysql 端口</span><br></pre></td></tr></table></figure></p>
+<h2 id="8-安全应急响应中心平台的实现运行"><a href="#8-安全应急响应中心平台的实现运行" class="headerlink" title="8. 安全应急响应中心平台的实现运行"></a>8. 安全应急响应中心平台的实现运行</h2><p>（Implementation of the security emergency response center platform）<br>通过以上设计、实现急响应中心平台后，可进行本平台的运行。<br>8.1平台的首页<br>当用户通过域名登录平台后，进入了安全应急响应中心平台的首页，如图4所示。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/10798423-d234e28f47563e9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/553" alt="图4 安全应急响应中心平台的首页" title="">
+                </div>
+                <div class="image-caption">图4 安全应急响应中心平台的首页</div>
+            </figure><br>8.2平台的贡献榜页面<br>实现用户提交漏洞之后，获得排名和积分。排名越前，实力越强。因此帮助用户快速的查看贡献，提高自己的实力。如图5所示。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/10798423-347064427c4ef042.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/554" alt="图5 平台的贡献榜页面" title="">
+                </div>
+                <div class="image-caption">图5 平台的贡献榜页面</div>
+            </figure><br>8.3平台的礼品库页面<br>用户通过自己的总积分，可在礼品库兑换相应等值的礼品，是平台的奖励机制，其页面如图6所示。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/10798423-558b0da1c6dddfb3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/554" alt="图6 平台的礼品库页面" title="">
+                </div>
+                <div class="image-caption">图6 平台的礼品库页面</div>
+            </figure><br>8.4平台的后台主页面<br>后台管理页面提供的功能，主要包括控制台、漏洞管理、礼品中心、博客公告、用户管理、贡献管理、系统设置其页面如图 7所示。<br>![图7 平台的后台主页面]<a href="https://upload-images.jianshu.io/upload_images/10798423-095a92924a095852.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/572" target="_blank" rel="noopener">https://upload-images.jianshu.io/upload_images/10798423-095a92924a095852.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/572</a>)<br>8.5后台的特色功能页面<br>专门为方便企业安全事件管理设计的特色功能有外部漏洞报告导出、单个漏洞报告生成工单（导出为json格式）其页面如图 8所示<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/10798423-bd6fa15a82518c00.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/583" alt="图8 后台的特色功能页面" title="">
+                </div>
+                <div class="image-caption">图8 后台的特色功能页面</div>
+            </figure></p>
+<h2 id="9-结论（Conclusion）"><a href="#9-结论（Conclusion）" class="headerlink" title="9. 结论（Conclusion）"></a>9. 结论（Conclusion）</h2><p>本系统为中小企业的网络安全需求提供了一种捷径，使原来复杂的收集漏洞和披露计划简化，大幅度的降低网络安全的成本，增加了积极主动的内部探测潜在的安全漏洞，减少网络安全的威胁，使企业网络系统给企业和用户带来稳定健康的服务，发挥了安全应急中心平台的预期效果。<br>虽然平台的实现如期获得了一些成果，但由于团队的实现时间的限制与技术水平的局限，在有些功能上还需要进一步的优化。首先，平台功能不够完善。该平台只实现了基本的相关功能，在功能仍然有进步的空间。下一步将是根据具体的需求，进一步更新平台的功能。其次，平台代码仍需要进行简化。在平台设计中,针对共同的代码进行集成类,如数据库连接等,但仍在平台代码中存在冗余,代码在执行过程中占用较多的资源和时间,还需要做进一步的代码简化。</p>
+<h2 id="参考文献（References）"><a href="#参考文献（References）" class="headerlink" title="参考文献（References）"></a>参考文献（References）</h2><p>[1]康玉婷,刘刚,张春柳.信息系统安全管理的问题和对策[J].电子技术与软件工程,2017,(10):212-214.<br>[2]白嘎力. 安全应急响应中心(SRC)是如何运作的?[J]. 中国信息安全,2016,(07):61-62.<br>[3]Martin Zhou.企业安全应急响应系统[DB/OL].<a href="https://github.com/martinzhou2015/SRCMS,2017-09-09" target="_blank" rel="noopener">https://github.com/martinzhou2015/SRCMS,2017-09-09</a>.<br>[4]赵粮.网络安全应急响应的新常态[J].中国信息安全,2015,(07):94-97.<br>[5]张睿,李欣.基于PHP技术的自助建站系统的设计与实现[J].科技创新导报,2008,(04):42-43.<br>[6]MicheleE.Davis,JonA.Phillips.学习PHP和MySQL[M].北京:机械工业出版社.2008,179-190．<br>[7]Evi Nemeth Garth Snyder Trent R.Hein.Linux系统管理技术手册 第2版·英文版[M].北京:人民邮电出版社.2007,9-15.<br>[8]王俊芳,李隐峰,王池.基于MVC模式的ThinkPHP框架研究[J].电子科技,2014,27(04):151-153+158.</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-03-25T10:47:24.243Z" itemprop="dateUpdated">2018-03-25 18:47:24</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="/2018/02/25/安全应急响应中心平台的设计与实现/" target="_blank" rel="external">http://yoursite.com/2018/02/25/安全应急响应中心平台的设计与实现/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Flying">
+            Flying
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/应急响应平台/">应急响应平台</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/披露计划/">披露计划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/漏洞收集/">漏洞收集</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络安全/">网络安全</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/02/25/ES6语法/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">ES6语法</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/02/25/Css自然垂直/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Css自然垂直</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'disqus_shortname';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Bug不会眷顾你的哈~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+
+            <span>Flying &copy; 2015 - 2018</span>
+            <span>
+        </p>
+    </div>
+    <!--<div class="bottom">
+        <p>
+        <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">闽ICP备16004621号-2</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>-->
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Hi`你好像掉线咯！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Hi`Flying`s Blog!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
