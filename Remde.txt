@@ -1,0 +1,5 @@
+1.git branch命令查看当前所在分支
+2.git add .、git commit -m 'back up hexo files'（引号内容可改）、git push -u origin master、git pull ** 每次换电脑进行博客更新时，不管上次在其他电脑有没有更新
+2-1.到MeCode git clone 拉取模板
+3.npm install
+4.执行hexo d -g指令（在此之前，有时可能需要执行hexo clean）
