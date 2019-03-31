@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://flying0601.github.io/"/>
-  <updated>2019-03-31T06:58:40.891Z</updated>
+  <updated>2019-03-31T07:48:44.325Z</updated>
   <id>http://flying0601.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CSS优先级计算及应用</title>
+    <link href="http://flying0601.github.io/2018/06/12/CSS%E4%BC%98%E5%85%88%E7%BA%A7%E8%AE%A1%E7%AE%97%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
+    <id>http://flying0601.github.io/2018/06/12/CSS优先级计算及应用/</id>
+    <published>2018-06-12T15:27:00.000Z</published>
+    <updated>2019-03-31T07:48:44.325Z</updated>
+    
+    <content type="html"><![CDATA[<p>梳理这部分是因为在使用组件模式开发 h5 应用会出现组件样式修改未生效的问题，在解决样式修改的问题前，需要理清楚 CSS 样式生效的优先级。样式根据引入和声明需要分开介绍，分为引入样式优先级和声明样式优先级。<a id="more"></a></p><p>###1.引入样式优先级<br>引入样式优先级一般是在外部样式、内部样式、内联样式之间应用同一个样式的情况是使用， 优先级如下：</p><h5 id="外部样式-内部样式-lt-内联样式"><a href="#外部样式-内部样式-lt-内联样式" class="headerlink" title="*外部样式 | 内部样式 &lt; 内联样式"></a>*外部样式 | 内部样式 &lt; 内联样式</h5><h5 id="外部样式和内部样式，最后出现的优先级最高，例如："><a href="#外部样式和内部样式，最后出现的优先级最高，例如：" class="headerlink" title="*外部样式和内部样式，最后出现的优先级最高，例如："></a>*外部样式和内部样式，最后出现的优先级最高，例如：</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 内联样式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"color:red;"</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  /* 内部样式 */</span></span><br><span class="line"><span class="undefined">  h3 &#123;</span></span><br><span class="line"><span class="undefined">    color: green;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 外部样式 style.css --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"style.css"</span> /&gt;</span></span><br></pre></td></tr></table></figure><p>因此，对于一些重置的样式集，比如 normalize.css/reset.css 必须写在所有样式的前面。</p><p>###2.声明样式优先级</p><h4 id="①-大致的优先级"><a href="#①-大致的优先级" class="headerlink" title="① 大致的优先级"></a>① 大致的优先级</h4><p>一般来说满这个规则：</p><blockquote><p>_继承不如指定<br>_!important &gt; 内联 &gt; ID &gt; Class|属性|伪类 &gt; 元素选择器<br>*:link、:visited、:hover、:active 按照 LVHA（LoVe HAte）顺序定义</p></blockquote><p>上面是优先级算法反映出的大致结果，在一般的开发中熟记即可。如果需要进一步研究原理，则了解下优先级算法。</p><h4 id="②-优先级算法"><a href="#②-优先级算法" class="headerlink" title="② 优先级算法"></a>② 优先级算法</h4><p>选择器的特殊性值分为四个等级，如下：</p><table><br><thead><br><tr><br><th>等级</th><br><th>标签内选择符</th><br><th>ID 选择符</th><br><th>Class 选择符/属性选择符/伪类选择符</th><br><th>元素选择符</th><br></tr><br></thead><br><tbody><br><tr><br><td>示例</td><br><td><code class="language-text">&lt;span style=”color:red;”&gt;</code></td><br><td><code class="language-text">#text{color:red;}</code></td><br><td><code class="language-text">.text{color:red;} [type=”text”]{color:red}</code></td><br><td><code class="language-text">span{color:red;}</code></td><br></tr><br><tr><br><td>标记位</td><br><td>x,0,0,0</td><br><td>0,x,0,0</td><br><td>0,0,x,0</td><br><td>0,0,0,x</td><br></tr><br></tbody><br></table><h4 id="特点"><a href="#特点" class="headerlink" title="特点:"></a>特点:</h4><blockquote><p>每个等级的初始值为 0，<br>每个等级的叠加为选择器出现的次数相加<br>不可进位，比如0,99,99,99<br>依次表示为：0,0,0,0<br>每个等级计数之间没关联<br>等级判断从左向右，如果某一位数值相同，则判断下一位数值<br>如果两个优先级相同，则最后出现的优先级高，!important也适用<br>通配符选择器的特殊性值为：0,0,0,0<br>继承样式优先级最低，通配符样式优先级高于继承样式</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      CSS优先级计算
+    
+    </summary>
+    
+      <category term="HTML/CSS" scheme="http://flying0601.github.io/categories/HTML-CSS/"/>
+    
+    
+      <category term="CSS优先级" scheme="http://flying0601.github.io/tags/CSS%E4%BC%98%E5%85%88%E7%BA%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>HTML与CSS布局技巧精髓（全屏布局篇）</title>
