@@ -27,11 +27,11 @@
 <meta name="keywords" content="CSS优先级">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS优先级计算">
-<meta property="og:url" content="http://flying0601.github.io/2018/06/12/CSS优先级计算/index.html">
+<meta property="og:url" content="http://flying0601.github.io/2018/12/20/CSS优先级计算/index.html">
 <meta property="og:site_name" content="Flying&#39;s Blog">
 <meta property="og:description" content="CSS优先级计算">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-31T07:54:50.231Z">
+<meta property="og:updated_time" content="2019-03-31T13:50:40.534Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS优先级计算">
 <meta name="twitter:description" content="CSS优先级计算">
@@ -143,8 +143,8 @@
         <h1 class="title">CSS优先级计算</h1>
         <h5 class="subtitle">
             
-                <time datetime="2018-06-12T15:27:00.000Z" itemprop="datePublished" class="page-time">
-  2018-06-12
+                <time datetime="2018-12-20T15:27:00.000Z" itemprop="datePublished" class="page-time">
+  2018-12-20
 </time>
 
 
@@ -165,7 +165,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-引入样式优先级"><span class="post-toc-text">1.引入样式优先级</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#外部样式-内部样式-lt-内联样式"><span class="post-toc-text">*外部样式 | 内部样式 &lt; 内联样式</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#外部样式和内部样式，最后出现的优先级最高，例如："><span class="post-toc-text">*外部样式和内部样式，最后出现的优先级最高，例如：</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-声明样式优先级"><span class="post-toc-text">2.声明样式优先级</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#①-大致的优先级"><span class="post-toc-text">① 大致的优先级</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#②-优先级算法"><span class="post-toc-text">② 优先级算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#特点"><span class="post-toc-text">特点:</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-引入样式优先级"><span class="post-toc-text">1.引入样式优先级</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-声明样式优先级"><span class="post-toc-text">2.声明样式优先级</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#①-大致的优先级"><span class="post-toc-text">① 大致的优先级</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#②-优先级算法"><span class="post-toc-text">② 优先级算法</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -176,7 +176,7 @@
     <div class="post-card">
         <h1 class="post-card-title">CSS优先级计算</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-06-12 23:27:00" datetime="2018-06-12T15:27:00.000Z"  itemprop="datePublished">2018-06-12</time>
+            <time class="post-time" title="2018-12-20 23:27:00" datetime="2018-12-20T15:27:00.000Z"  itemprop="datePublished">2018-12-20</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/HTML-CSS/">HTML/CSS</a></li></ul>
@@ -188,21 +188,42 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>梳理这部分是因为在使用组件模式开发 h5 应用会出现组件样式修改未生效的问题，在解决样式修改的问题前，需要理清楚 CSS 样式生效的优先级。样式根据引入和声明需要分开介绍，分为引入样式优先级和声明样式优先级。<a id="more"></a></p>
-<h3 id="1-引入样式优先级"><a href="#1-引入样式优先级" class="headerlink" title="1.引入样式优先级"></a>1.引入样式优先级</h3><p>引入样式优先级一般是在外部样式、内部样式、内联样式之间应用同一个样式的情况是使用， 优先级如下：</p>
-<h5 id="外部样式-内部样式-lt-内联样式"><a href="#外部样式-内部样式-lt-内联样式" class="headerlink" title="*外部样式 | 内部样式 &lt; 内联样式"></a>*外部样式 | 内部样式 &lt; 内联样式</h5><h5 id="外部样式和内部样式，最后出现的优先级最高，例如："><a href="#外部样式和内部样式，最后出现的优先级最高，例如：" class="headerlink" title="*外部样式和内部样式，最后出现的优先级最高，例如："></a>*外部样式和内部样式，最后出现的优先级最高，例如：</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 内联样式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"color:red;"</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  /* 内部样式 */</span></span><br><span class="line"><span class="undefined">  h3 &#123;</span></span><br><span class="line"><span class="undefined">    color: green;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 外部样式 style.css --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"style.css"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-引入样式优先级"><a href="#1-引入样式优先级" class="headerlink" title="1.引入样式优先级"></a>1.引入样式优先级</h3><hr>
+<p>引入样式优先级一般是在外部样式、内部样式、内联样式之间应用同一个样式的情况是使用， 优先级如下：</p>
+<p>  <strong>外部样式</strong>  | <strong>内部样式</strong> &lt; <strong>内联样式</strong></p>
+<p>  <strong>外部样式</strong>和<strong>内部样式</strong>，最后出现的优先级最高，例如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 内联样式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"color:red;"</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  /* 内部样式 */</span></span><br><span class="line"><span class="undefined">  h3 &#123;</span></span><br><span class="line"><span class="undefined">    color: green;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 外部样式 style.css --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"style.css"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 <p>因此，对于一些重置的样式集，比如 normalize.css/reset.css 必须写在所有样式的前面。</p>
-<h3 id="2-声明样式优先级"><a href="#2-声明样式优先级" class="headerlink" title="2.声明样式优先级"></a>2.声明样式优先级</h3><h4 id="①-大致的优先级"><a href="#①-大致的优先级" class="headerlink" title="① 大致的优先级"></a>① 大致的优先级</h4><p>一般来说满这个规则：</p>
+<h3 id="2-声明样式优先级"><a href="#2-声明样式优先级" class="headerlink" title="2.声明样式优先级"></a>2.声明样式优先级</h3><h4 id="①-大致的优先级"><a href="#①-大致的优先级" class="headerlink" title="① 大致的优先级"></a>① 大致的优先级</h4><p>一般来说满足这个规则：</p>
 <blockquote>
-<p>_继承不如指定<br>_!important &gt; 内联 &gt; ID &gt; Class|属性|伪类 &gt; 元素选择器<br>*:link、:visited、:hover、:active 按照 LVHA（LoVe HAte）顺序定义</p>
+<ul>
+<li>继承不如指定</li>
+<li>!important &gt; 内联 &gt; ID &gt; Class|属性|伪类 &gt; 元素选择器</li>
+<li>:link、:visited、:hover、:active 按照 LVHA（LoVe HAte）顺序定义</li>
+</ul>
 </blockquote>
 <p>上面是优先级算法反映出的大致结果，在一般的开发中熟记即可。如果需要进一步研究原理，则了解下优先级算法。</p>
-<h4 id="②-优先级算法"><a href="#②-优先级算法" class="headerlink" title="② 优先级算法"></a>② 优先级算法</h4><p>选择器的特殊性值分为四个等级，如下：</p>
-<table> <thead> <tr> <th>等级</th> <th>标签内选择符</th> <th>ID 选择符</th> <th>Class 选择符/属性选择符/伪类选择符</th> <th>元素选择符</th> </tr> </thead> <tbody> <tr> <td>示例</td> <td><code class="language-text">&lt;span style=”color:red;”&gt;</code></td> <td><code class="language-text">#text{color:red;}</code></td> <td><code class="language-text">.text{color:red;} [type=”text”]{color:red}</code></td> <td><code class="language-text">span{color:red;}</code></td> </tr> <tr> <td>标记位</td> <td>x,0,0,0</td> <td>0,x,0,0</td> <td>0,0,x,0</td> <td>0,0,0,x</td> </tr> </tbody> </table>
-
-
-<h4 id="特点"><a href="#特点" class="headerlink" title="特点:"></a>特点:</h4><blockquote>
+<h4 id="②-优先级算法"><a href="#②-优先级算法" class="headerlink" title="② 优先级算法"></a>② 优先级算法</h4><p>选择器的特殊性值分为四个等级，如下：<br>等级 | 标签内选择符 | Class 选择符/属性选择符/伪类选择符 | 元素选择符</p>
+<ul>
+<li>| :-: |:-:|-:<br>示例 | <code>&lt;span style=&quot;color:red;&quot;&gt;</code> | <code>#text{color:red;}</code> | <code>.text{color:red;} [type=&quot;text&quot;]{color:red}</code> | <code>span{color:red;}</code><br>标记位 | x,0,0,0 | 0,x,0,0 | 0,0,x,0 | 0,0,0,x</li>
+</ul>
+<p><strong>特点:</strong></p>
+<blockquote>
 <p>每个等级的初始值为 0，<br>每个等级的叠加为选择器出现的次数相加<br>不可进位，比如0,99,99,99<br>依次表示为：0,0,0,0<br>每个等级计数之间没关联<br>等级判断从左向右，如果某一位数值相同，则判断下一位数值<br>如果两个优先级相同，则最后出现的优先级高，!important也适用<br>通配符选择器的特殊性值为：0,0,0,0<br>继承样式优先级最低，通配符样式优先级高于继承样式</p>
 </blockquote>
+<p><strong>计算示例：</strong></p>
+<blockquote>
+<p><code>a{color: yellow;} /*特殊性值：0,0,0,1*/</code><br><code>div a{color: green;} /*特殊性值：0,0,0,2*/</code><br><code>.demo a{color: black;} /*特殊性值：0,0,1,1*/</code><br><code>.demo input[type=&quot;text&quot;]{color: blue;} /*特殊性值：0,0,2,1*/</code><br><code>.demo *[type=&quot;text&quot;]{color: grey;} /*特殊性值：0,0,2,0*/</code><br><code>#demo a{color: orange;} /*特殊性值：0,1,0,1*/</code><br><code>div#demo a{color: red;} /*特殊性值：0,1,0,2*/</code></p>
+</blockquote>
+<p><strong>生效示例：</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>第一条应该是黄色<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="comment">&lt;!--适用第1行规则--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">"第二条应该是蓝色"</span> /&gt;</span><span class="comment">&lt;!--适用第4、5行规则，第4行优先级高--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>第三条应该是黑色<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="comment">&lt;!--适用第2、3行规则，第3行优先级高--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"demo"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>第四条应该是红色<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="comment">&lt;!--适用第6、7行规则，第7行优先级高--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>关于伪类 LVHA 的解释</strong><br>a 标签有四种状态：链接访问前、链接访问后、鼠标滑过、激活，分别对应四种伪类:link、:visited、:hover、:active；</p>
+<blockquote>
+<ul>
+<li>当鼠标滑过 a 链接时，满足:link和:hover两个伪类，要改变 a 标签的颜色，就必须将:hover 伪类在:link 伪类后面声明；</li>
+<li>当鼠标点击激活 a 链接时，同时满足:link、:hover、:active 三种状态，要显示 a 标签激活时的样式（:active），必须将:active 声明放到:link 和:hover 之后。因此得出 LVHA 这个顺序。</li>
+</ul>
+</blockquote>
+<p>这个顺序能不能变？可以，但也只有:link 和:visited 可以交换位置，因为一个链接要么访问过要么没访问过，不可能同时满足，也就不存在覆盖的问题。</p>
 
         </div>
 
@@ -211,12 +232,12 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-03-31T07:54:50.231Z" itemprop="dateUpdated">2019-03-31 15:54:50</time>
+    最后更新时间：<time datetime="2019-03-31T13:50:40.534Z" itemprop="dateUpdated">2019-03-31 21:50:40</time>
 </span><br>
 
 
         
-        转载请注明出处：<a href="/2018/06/12/CSS优先级计算/" target="_blank" rel="external">http://flying0601.github.io/2018/06/12/CSS优先级计算/</a>
+        转载请注明出处：<a href="/2018/12/20/CSS优先级计算/" target="_blank" rel="external">http://flying0601.github.io/2018/12/20/CSS优先级计算/</a>
         
     </div>
     
@@ -252,9 +273,9 @@
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/05/27/HTML与CSS布局技巧精髓(全屏布局篇) /" id="post-next" class="post-nav-link">
+      <a href="/2018/10/10/安全应急响应中心平台的设计与实现/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">HTML与CSS布局技巧精髓（全屏布局篇）</h4>
+        <h4 class="title">安全应急响应中心平台的设计与实现</h4>
       </a>
     </div>
   
