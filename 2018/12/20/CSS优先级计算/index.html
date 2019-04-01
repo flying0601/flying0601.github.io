@@ -22,16 +22,16 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="CSS优先级">
+    <meta name="keywords" content="CSS,优先级计算">
     <meta name="description" content="CSS优先级计算">
-<meta name="keywords" content="CSS优先级">
+<meta name="keywords" content="CSS,优先级计算">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS优先级计算">
 <meta property="og:url" content="http://flying0601.github.io/2018/12/20/CSS优先级计算/index.html">
 <meta property="og:site_name" content="Flying&#39;s Blog">
 <meta property="og:description" content="CSS优先级计算">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-31T13:50:40.534Z">
+<meta property="og:updated_time" content="2019-03-31T13:56:26.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS优先级计算">
 <meta name="twitter:description" content="CSS优先级计算">
@@ -203,10 +203,9 @@
 </ul>
 </blockquote>
 <p>上面是优先级算法反映出的大致结果，在一般的开发中熟记即可。如果需要进一步研究原理，则了解下优先级算法。</p>
-<h4 id="②-优先级算法"><a href="#②-优先级算法" class="headerlink" title="② 优先级算法"></a>② 优先级算法</h4><p>选择器的特殊性值分为四个等级，如下：<br>等级 | 标签内选择符 | Class 选择符/属性选择符/伪类选择符 | 元素选择符</p>
-<ul>
-<li>| :-: |:-:|-:<br>示例 | <code>&lt;span style=&quot;color:red;&quot;&gt;</code> | <code>#text{color:red;}</code> | <code>.text{color:red;} [type=&quot;text&quot;]{color:red}</code> | <code>span{color:red;}</code><br>标记位 | x,0,0,0 | 0,x,0,0 | 0,0,x,0 | 0,0,0,x</li>
-</ul>
+<h4 id="②-优先级算法"><a href="#②-优先级算法" class="headerlink" title="② 优先级算法"></a>② 优先级算法</h4><p>选择器的特殊性值分为四个等级，如下：</p>
+<table> <thead> <tr> <th>等级</th> <th>标签内选择符</th> <th>ID 选择符</th> <th>Class 选择符/属性选择符/伪类选择符</th> <th>元素选择符</th> </tr> </thead> <tbody> <tr> <td>示例</td> <td><code class="language-text">&lt;span style=”color:red;”&gt;</code></td> <td><code class="language-text">#text{color:red;}</code></td> <td><code class="language-text">.text{color:red;} [type=”text”]{color:red}</code></td> <td><code class="language-text">span{color:red;}</code></td> </tr> <tr> <td>标记位</td> <td>x,0,0,0</td> <td>0,x,0,0</td> <td>0,0,x,0</td> <td>0,0,0,x</td> </tr> </tbody> </table>
+
 <p><strong>特点:</strong></p>
 <blockquote>
 <p>每个等级的初始值为 0，<br>每个等级的叠加为选择器出现的次数相加<br>不可进位，比如0,99,99,99<br>依次表示为：0,0,0,0<br>每个等级计数之间没关联<br>等级判断从左向右，如果某一位数值相同，则判断下一位数值<br>如果两个优先级相同，则最后出现的优先级高，!important也适用<br>通配符选择器的特殊性值为：0,0,0,0<br>继承样式优先级最低，通配符样式优先级高于继承样式</p>
@@ -232,7 +231,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-03-31T13:50:40.534Z" itemprop="dateUpdated">2019-03-31 21:50:40</time>
+    最后更新时间：<time datetime="2019-03-31T13:56:26.050Z" itemprop="dateUpdated">2019-03-31 21:56:26</time>
 </span><br>
 
 
@@ -258,7 +257,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS优先级/">CSS优先级</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/优先级计算/">优先级计算</a></li></ul>
 
 
             
@@ -268,7 +267,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/03/20/Vue2.0的三种常用传值方式、父传子、子传父、非父子组件传值/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Vue2.0的三种常用传值方式、父传子、子传父、非父子组件传值</h4>
+      </a>
+    </div>
   
 
   
